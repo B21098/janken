@@ -2,19 +2,20 @@ package oit.is.z1819.kaizi.janken.model;
 
 import org.springframework.stereotype.Controller;
 
-import java.util.Random;
+//import java.util.Random;
 
 @Controller
 public class Janken {
 
-  public String cpuChoices() {
+
+    public String cpuChoices() {
     // CPUの手をランダムに選ぶ
     String[] cpuChoices = { "Gu", "Cho", "Pa" };
     Random random = new Random();
     int cpuIndex = random.nextInt(cpuChoices.length);
     String cpuChoice = cpuChoices[cpuIndex];
     return cpuChoice;
-  }
+   }
 
   public String determineWinner(String playerChoice, String cpuChoice) {
     if (playerChoice.equals(cpuChoice)) {

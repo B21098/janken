@@ -32,8 +32,8 @@ public class JankenController {
   @GetMapping("Gu")
   public String Gu(Model model) {
     String playerChoice = "Gu";
+    String cpuChoice = "Gu";
     Janken janken = new Janken();
-    String cpuChoice = janken.cpuChoices();
     String result = janken.determineWinner(playerChoice, cpuChoice);
     model.addAttribute("playerChoice", playerChoice);
     model.addAttribute("cpuChoice", cpuChoice);
@@ -44,8 +44,8 @@ public class JankenController {
   @GetMapping("Cho")
   public String Cho(Model model) {
     String playerChoice = "Cho";
+    String cpuChoice = "Gu";
     Janken janken = new Janken();
-    String cpuChoice = janken.cpuChoices();
     String result = janken.determineWinner(playerChoice, cpuChoice);
     model.addAttribute("playerChoice", playerChoice);
     model.addAttribute("cpuChoice", cpuChoice);
@@ -56,8 +56,8 @@ public class JankenController {
   @GetMapping("Pa")
   public String Pa(Model model) {
     String playerChoice = "Pa";
+    String cpuChoice = "Gu";
     Janken janken = new Janken();
-    String cpuChoice = janken.cpuChoices();
     String result = janken.determineWinner(playerChoice, cpuChoice);
     model.addAttribute("playerChoice", playerChoice);
     model.addAttribute("cpuChoice", cpuChoice);
