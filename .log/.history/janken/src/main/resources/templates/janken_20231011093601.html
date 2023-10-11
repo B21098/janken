@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
 
 <head>
   <meta charset="utf-8">
@@ -14,11 +14,14 @@
 
   <p>エントリー</p>
     <ul>
+      <!--eachは所謂for each．この場合entryオブジェクトのusersフィールドにあるすべてのデータを一通り表示する
+      thが指定されているので[]が不要になる-->
       <li th:each="user : ${entry.users}">[[${user}]]</li>
     </ul>
   </div>
 
-  <div>Hi [[${login_user}]]</div>
+  <!--sec:authenticationで認証情報にアクセスできる．nameはユーザ名を表す-->
+  <div sec:authentication="name"></div>
 
   <a href="/janken/Gu">ぐー</a>
   <a href="/janken/Cho">ちょき</a>

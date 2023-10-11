@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/schema/security">
 
 <head>
   <meta charset="utf-8">
@@ -13,12 +13,15 @@
   <h1>Janken GAME!</h1>
 
   <p>エントリー</p>
+  <div th:if="${user}">
     <ul>
+      <!--eachは所謂for each．この場合entryオブジェクトのusersフィールドにあるすべてのデータを一通り表示する
+      thが指定されているので[]が不要になる-->
       <li th:each="user : ${entry.users}">[[${user}]]</li>
     </ul>
   </div>
 
-  <div>Hi [[${login_user}]]</div>
+  <div th:if="${login_user}">Hi [[${login_user}]]</div>
 
   <a href="/janken/Gu">ぐー</a>
   <a href="/janken/Cho">ちょき</a>
