@@ -15,13 +15,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class JankenAuthConfiguration {
 
-  /**
-   * 認可処理に関する設定（認証されたユーザがどこにアクセスできるか）
-   *
-   * @param http
-   * @return
-   * @throws Exception
-   */
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.formLogin(login -> login
