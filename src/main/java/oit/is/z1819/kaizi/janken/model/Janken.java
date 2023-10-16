@@ -1,30 +1,43 @@
 package oit.is.z1819.kaizi.janken.model;
 
-import org.springframework.stereotype.Controller;
-
 import java.util.Random;
 
-@Controller
+//@Controller
 public class Janken {
+  private String cpu;
+  private String player;
 
-  public String cpuChoices() {
-    // CPUの手をランダムに選ぶ
-    String[] cpuChoices = { "Gu", "Cho", "Pa" };
-    Random random = new Random();
-    int cpuIndex = random.nextInt(cpuChoices.length);
-    String cpuChoice = cpuChoices[cpuIndex];
-    return cpuChoice;
+public void setPlayer(String hand) {
+    this.player = hand;
   }
 
-  public String determineWinner(String playerChoice, String cpuChoice) {
-    if (playerChoice.equals(cpuChoice)) {
-      return "Drow";
-    } else if ((playerChoice.equals("Gu") && cpuChoice.equals("Cho")) ||
-        (playerChoice.equals("Cho") && cpuChoice.equals("Pa")) ||
-        (playerChoice.equals("Pa") && cpuChoice.equals("Gu"))) {
-      return "You Win!";
-    } else {
-      return "You Lose";
+  public String getPlayer() {
+    return this.player;
+  }
+
+  public String getCpu() {
+    int rand = new Random().nextInt(3);
+    switch (rand) {
+      case 0:
+        this.cpu = "Gu";
+        break;
+      case 1:
+        this.cpu = "Choki";
+        break;
+      case 2:
+        this.cpu = "Pa";
+        break;
     }
+    return this.cpu;
+  }
+
+  public String determineWinner() {
+    if (this.player.equals(this.cpu))
+      return "Drow";
+    if ((this.player.equals("Gu") && this.cpu.equals("Choki")) ||
+        (this.player.equals("Choki") && this.cpu.equals("Pa")) ||
+        (this.player.equals("Pa") && this.cpu.equals("Gu")))
+      return "You Win!";
+    return "You Lose";
   }
 }

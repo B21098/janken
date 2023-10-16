@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Entry {
     ArrayList<String> users = new ArrayList<>();
-    
+
     public void addUser(String name) {
         // 同名のユーザが居たら何もせずにreturn
         for (String s : this.users) {
@@ -18,16 +18,20 @@ public class Entry {
         }
         // 同名のユーザが居なかった場合はusersにnameを追加する
         this.users.add(name);
-        }
-    
+    }
+
     // 以降はフィールドのgetter/setter
-    // これらがないとThymeleafで値を取得できない    
+    // これらがないとThymeleafで値を取得できない
     public ArrayList<String> getUsers() {
-    return users;
+        return users;
     }
-    
+
     public void setUsers(ArrayList<String> users) {
-    this.users = users;
+        this.users = users;
     }
-    
+
+    public int getNumUsers() {
+        return this.users.size();
+    }
+
 }
