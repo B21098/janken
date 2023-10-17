@@ -29,9 +29,4 @@ public class Entry {
     public void setUsers(ArrayList<String> users) {
         this.users = users;
     }
-
-    public int getNumUsers() {
-        return this.users.size();
-    }
-
 }
