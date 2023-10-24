@@ -10,7 +10,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-
 @Configuration
 @EnableWebSecurity
 public class JankenAuthConfiguration {
@@ -24,7 +23,12 @@ public class JankenAuthConfiguration {
             .logoutSuccessUrl("/")) // ログアウト後に / にリダイレクト
         .authorizeHttpRequests(authz -> authz
             .requestMatchers(AntPathRequestMatcher.antMatcher("/janken/**")).authenticated() // /sample3/以下は認証済みであること
-            .requestMatchers(AntPathRequestMatcher.antMatcher("/**")).permitAll()); // それ以外は全員アクセス可能
+            .requestMatchers(AntPathRequestMatcher.antMatcher("/**")).permitAll()) // それ以外は全員アクセス可能
+        .csrf(csrf -> csrf
+            .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/*")))
+        .headers(headers -> headers
+            .frameOptions(frameOptions -> frameOptions
+                .sameOrigin()));
     return http.build();
   }
 
@@ -46,8 +50,10 @@ public class JankenAuthConfiguration {
         .password("{bcrypt}$2y$10$u/n1xoLwidiEsiGiVkDN2OsQ6zAOreF3E5K1HQm.hTxyNcAJ6Y8Dm").roles("USER").build();
     UserDetails user2 = User.withUsername("user2")
         .password("{bcrypt}$2y$10$u/n1xoLwidiEsiGiVkDN2OsQ6zAOreF3E5K1HQm.hTxyNcAJ6Y8Dm").roles("USER").build();
+    UserDetails user3 = User.withUsername("ほんだ")
+        .password("{bcrypt}$2y$10$u/n1xoLwidiEsiGiVkDN2OsQ6zAOreF3E5K1HQm.hTxyNcAJ6Y8Dm").roles("USER").build();
 
     // 生成したユーザをImMemoryUserDetailsManagerに渡す
-    return new InMemoryUserDetailsManager(user1, user2);
+    return new InMemoryUserDetailsManager(user1, user2, user3);
   }
 }
