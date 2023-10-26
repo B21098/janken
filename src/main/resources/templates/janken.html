@@ -15,20 +15,8 @@
 
   <h2>エントリー</h2>
   <ul>
-    <li th:each="user : ${users}">[[${user.getUserName()}]]</li>
+    <li th:each="user : ${users}"><a th:href="@{/match(id=${user.id})}"> [[${user.getUserName()}]]</a></li>
   </ul>
-
-  <div>
-    <a href="/jankengame?hand=Gu">グー</a>
-    <a href="/jankengame?hand=Choki">チョキ</a>
-    <a href="/jankengame?hand=Pa">パー</a>
-  </div>
-
-  <div th:if="${result}">
-    <p>あなたの手 [[${player_hand}]]</p>
-    <p>相手の手 [[${cpu_hand}]]</p>
-    <p>結果 [[${result}]]</p>
-  </div>
 
   <h2>試合結果</h2>
   <div th:if="${matches}">

@@ -32,6 +32,13 @@ public class JankenController {
     return "janken.html";
   }
 
+  @GetMapping("/match")
+  public String match(@RequestParam String id , ModelMap model ) {
+      User opp = usermapper.selectById(id);
+      model.addAttribute("opponent", opp);
+      return "match.html";
+  }
+
   @GetMapping("/jankengame")
   public String jankengame(@RequestParam String hand, ModelMap model) {
     Janken janken = new Janken();
