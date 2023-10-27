@@ -40,10 +40,10 @@ public class JankenController {
   }
   
   @GetMapping("/fight")
-  public String game(@RequestParam String id, @RequestParam String hand, ModelMap model, Principal prin) {
+  public String game(@RequestParam String id, @RequestParam String Player1, ModelMap model, Principal prin) {
     Match match = new Match();
     Janken janken = new Janken();
-    janken.setPlayer(hand);
+    janken.setPlayer(Player1);
     janken.setCpu();
 
     match.setUser1(usermapper.selectByName(prin.getName()).getId());

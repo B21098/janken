@@ -14,9 +14,9 @@
     <h2><span sec:authentication="name"></span> v.s [[${opponent.getUserName()}]]</h2>
 
     <div>
-        <a href="/jankengame?hand=Gu">グー</a>
-        <a href="/jankengame?hand=Choki">チョキ</a>
-        <a href="/jankengame?hand=Pa">パー</a>
+        <a th:href="@{/fight(id=${opponent.id}, hand='Gu')}">グー</a>
+        <a th:href="@{/fight(id=${opponent.id}, hand='Choki')}">チョキ</a>
+        <a th:href="@{/fight(id=${opponent.id}, hand='Pa')}">パー</a>
     </div>
 
     <div th:if="${result}">
