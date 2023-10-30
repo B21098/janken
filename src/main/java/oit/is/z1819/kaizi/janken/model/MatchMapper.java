@@ -9,13 +9,13 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface MatchMapper {
-    @Select("SELECT * from matches")
-    ArrayList<Match> selectAllMatches();
+    @Select("SELECT id, user1, user2, user1Hand, user2Hand, isActive from matches")
+    ArrayList <Match> selectAllMatches();
 
-    @Select("SELECT * from matchinfo")
-    ArrayList<Match> selectByMatchinfo();
+    @Select("SELECT id, user1, user2, user1Hand, user2Hand, isActive from matches where isActive = true")
+    Match selectActiveMatch();
 
-    @Insert("INSERT INTO matches (user1, user2, user1Hand, user2Hand, isAvtive) VALUES (#{user1}, #{user2}, #{user1Hand}, #{user2Hand}, #{isActive})")
+    @Insert("INSERT INTO matches (user1, user2, user1Hand, user2Hand, isActive) VALUES (#{user1}, #{user2}, #{user1Hand}, #{user2Hand}, #{isActive})")
     @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
     void insertMatch(Match match);
 }

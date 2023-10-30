@@ -5,14 +5,23 @@ import java.util.Random;
 //@Controller
 public class Janken {
   private String cpu;
-  private String player;
+  private String player1;
+  private String player2;
 
-  public void setPlayer(String hand) {
-    this.player = hand;
+  public void setPlayer1(String hand) {
+    this.player1 = hand;
   }
 
-  public String getPlayer() {
-    return this.player;
+  public String getPlayer1() {
+    return this.player1;
+  }
+
+  public void setPlayer2(String hand) {
+    this.player2 = hand;
+  }
+
+  public String getPlayer2() {
+    return this.player2;
   }
 
   public void setCpu() {
@@ -35,12 +44,12 @@ public class Janken {
   }
 
   public String jankenResult() {
-    if (this.player.equals(this.cpu)) {
+    if (this.player1.equals(this.player2)) {
       return "Drow";
     }
-    if ((this.player.equals("Gu") && this.cpu.equals("Choki")) ||
-        (this.player.equals("Choki") && this.cpu.equals("Pa")) ||
-        (this.player.equals("Pa") && this.cpu.equals("Gu"))) {
+    if ((this.player1.equals("Gu") && this.player2.equals("Choki")) ||
+        (this.player1.equals("Choki") && this.player2.equals("Pa")) ||
+        (this.player1.equals("Pa") && this.player2.equals("Gu"))) {
       return "You Win!";
     }
     return "You Lose";
