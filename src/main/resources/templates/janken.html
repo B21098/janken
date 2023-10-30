@@ -18,19 +18,25 @@
     <li th:each="user : ${users}"><a th:href="@{/match(id=${user.id})}"> [[${user.getUserName()}]]</a></li>
   </ul>
 
+  <h2>アクティブな試合</h2>
+  <table th:each="active:${activematches}">
+      <tr>
+          <td>id:[[${active.id}]]</td>
+          <td>user1:[[${active.user1}]]</td>
+          <td>user2:[[${active.user2}]]</td>
+          <td>isActive:[[${active.isActive}]]</td>
+      </tr>
+  </table>
   <h2>試合結果</h2>
-  <div th:if="${matches}">
-    <ul>
-      <li th:each="match : ${matches}">
-        <td>id:[[${match.getId()}]]</td>
-        <td>user1:[[${match.getUser1()}]]</td>
-        <td>user2:[[${match.getUser2()}]]</td>
-        <td>user1の手:[[${match.getUser1Hand()}]]</td>
-        <td>user2の手:[[${match.getUser2Hand()}]]</td>
-      </li>
-    </ul>
-  </div>
-
+  <table th:each="match:${history}">
+      <tr>
+          <td>id:[[${match.id}]]</td>
+          <td>user1:[[${match.user1}]]</td>
+          <td>user2:[[${match.user2}]]</td>
+          <td>user1の手:[[${match.user1Hand}]]</td>
+          <td>user2の手:[[${match.user2Hand}]]</td>
+          <td>結果: <span th:text="${match.result}" /></td>
+      </tr>
+  </table>
 </body>
-
 </html>
